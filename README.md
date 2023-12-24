@@ -27,10 +27,11 @@ A exchange "direct" roteia mensagens para as filas cujas chaves de roteamento co
     channel.QueueBind(queue: queueName, exchange: exchangeName, routingKey: routingKey);
 ```
 
+No exemplo abaixo foi específico o Routing Key **key1**
+
+![Alt text](image-2.png)
 
 #### Fanout
-
-Quando uma mensagem é criada, essa exchange manda uma mensagem para cada Queue que está associada a ela. Isso permite que diferentes consumidores mantenham uma consistência em relação a mensagem, já que quando um consumidor consome a mensagem ela é retirada da Queue.
 
 É um tipo de exchange que roteia mensagens para todas as filas associadas a ela. Ao contrário das exchanges direct e topic, a fanout não utiliza chaves de roteamento. Ela simplesmente envia a mensagem para todas as filas vinculadas a ela, independentemente da chave de roteamento da mensagem.
 
@@ -48,6 +49,10 @@ Quando uma mensagem é criada, essa exchange manda uma mensagem para cada Queue 
     // Vinculação da fila à exchange
     channel.QueueBind(queue: queueName, exchange: exchangeName, routingKey: "");
 ```
+
+No exemplo abaixo a mensagem é enviada para todas as queues associadas a essa enchange.
+
+![Alt text](image-1.png)
 
 #### Topic
 
@@ -68,6 +73,10 @@ Quando uma mensagem é criada, essa exchange manda uma mensagem para cada Queue 
     // Vinculação da fila à exchange com um padrão de chave de roteamento
     channel.QueueBind(queue: queueName, exchange: exchangeName, routingKey: routingKeyPattern);
 ```
+
+No exemplo abaixo eu crio Routing Keys com padrões ***.key1** (wildcard) e o topic consegue redirecionar para a Queue correspondente.
+
+![Alt text](image-3.png)
 
 #### Headers
 
