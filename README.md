@@ -4,7 +4,8 @@ Exemplo básico de um Publisher e um Consumer.
 
 ## Exchanges
 
-Funciona como um middleware que através do Routing Key consegue transmitir mensagens para uma Queue específica. Esse processo de associar uma Queue a um Routing Key é chamado de Bind.
+Funciona como um middleware entre o producer e a queue.
+
 
 #### Direct
 
